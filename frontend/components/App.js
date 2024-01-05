@@ -51,7 +51,7 @@ export default class App extends React.Component {
     const payload = this.state.todoNameInput
     axios.post(URL, { name: payload})
     .then(res => {
-      this.fetchAllTodos()
+      this.setState({...this.state, todos: this.state.todos.concat(res.data.data)})
     })
     .catch(this.setAxiosResponseError)
     .finally(
